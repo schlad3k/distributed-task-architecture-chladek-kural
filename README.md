@@ -218,8 +218,8 @@ Monte-Carlo Pi-Berechnung mit 1M Samples (10 Slices):
 
 | Setup | Zeit | Throughput |
 |-------|------|------------|
-| 1 Worker | ~Xs | X M/s |
-| 2 Workers | ~Xs | X M/s |
+| 1 Worker | ~4.2s | 27 M/s |
+| 2 Workers | ~2.7s | 41 M/s |
 
 *Fuehre eigene Benchmarks durch und trage Werte ein*
 
