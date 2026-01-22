@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Akka Actor Typed
+    implementation 'com.typesafe.akka:akka-actor-typed_2.13:2.9.3'
+
+    // SLF4J Logging
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+}
+
+application {
+    mainClass = 'com.example.pi.PiCalculatorApp'
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes 'Main-Class': 'com.example.pi.PiCalculatorApp'
+    }
+}
+
+// Task zum Ausfuehren des Benchmarks
+tasks.register('benchmark', JavaExec) {
+    mainClass = 'com.example.pi.BenchmarkRunner'
+    classpath = sourceSets.main.runtimeClasspath
+}

@@ -1,0 +1,14 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Build
+target/
+*.class
+*.jar
+
+# System
+.claude/
+nul
+*.log
