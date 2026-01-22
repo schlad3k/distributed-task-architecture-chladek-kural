@@ -204,7 +204,7 @@ benchmark.bat
 ## Benchmark-Ergebnisse
 
 ### Akka Actors
-Monte-Carlo Pi-Berechnung mit 100M Samples:
+Monte-Carlo Pi-Berechnung mit 100M Samples auf Deniz HP Windows 10 Laptop:
 
 | Workers | Zeit | Speedup | Throughput |
 |---------|------|---------|------------|
@@ -214,7 +214,7 @@ Monte-Carlo Pi-Berechnung mit 100M Samples:
 | 8 Actors | ~2s | **5.3x** | 40 M/s |
 
 ### Apache Spark
-Monte-Carlo Pi-Berechnung mit 1M Samples (10 Slices):
+Monte-Carlo Pi-Berechnung mit 1M Samples (10 Slices) aujf Simons Debian 13 Laptop:
 
 | Setup | Zeit | Throughput |
 |-------|------|------------|
