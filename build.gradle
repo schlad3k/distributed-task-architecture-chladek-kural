@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1' // Hilft beim JAR-Bau
+}
+
+group = 'at.schule.spark'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spark Abhängigkeiten
+    implementation 'org.apache.spark:spark-core_2.12:3.5.0'
+    implementation 'org.apache.spark:spark-sql_2.12:3.5.0'
+}
+
+shadowJar {
+    archiveBaseName.set('spark-test-app')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+}
