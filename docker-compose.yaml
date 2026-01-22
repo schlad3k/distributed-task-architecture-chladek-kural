@@ -1,0 +1,28 @@
+services:
+  spark-master:
+    build: .
+    container_name: spark-master
+    command: bash -c "/opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --host spark-master --port 7077 --webui-port 8080"
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    volumes:
+      - ./build/libs:/opt/spark/work-jars
+
+  spark-worker-1:
+    build: .
+    container_name: spark-worker-1
+    depends_on:
+      - spark-master
+    command: bash -c "sleep 5 && /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077"
+    volumes:
+      - ./build/libs:/opt/spark/work-jars
+
+  spark-worker-2:
+    build: .
+    container_name: spark-worker-2
+    depends_on:
+      - spark-master
+    command: bash -c "sleep 5 && /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077"
+    volumes:
+      - ./build/libs:/opt/spark/work-jars
