@@ -1,50 +1,58 @@
 # Distributed Task Architecture
 
-Vergleich und Implementierung von Distributed Computing Technologien mit dem Master/Worker Pattern.
+Implementierung des Master/Worker Patterns mit Akka Typed Actors.
 
 ## Projektstruktur
 
 ```
 .
-├── akka-example/           # Java/Akka Actor-basierte Implementierung
-├── python-benchmark/       # Python Multiprocessing Benchmark
-├── distributed-computing-comparison.md  # Technologievergleich
-└── prompts.md             # Verwendete Prompts
+├── akka-example/                    # Java/Akka Implementierung
+│   ├── src/main/java/com/example/pi/
+│   │   ├── PiMessages.java          # Message-Protokoll
+│   │   ├── PiWorker.java            # Worker Actor
+│   │   ├── PiMaster.java            # Master Actor
+│   │   ├── PiCalculatorApp.java     # Hauptanwendung
+│   │   └── BenchmarkRunner.java     # Benchmark
+│   └── pom.xml
+├── distributed-computing-comparison.md
+└── prompts.md
 ```
 
 ## Technologievergleich
 
 | Technologie | Sprache | Architektur | Use Case |
 |-------------|---------|-------------|----------|
-| Apache Spark | Scala/Java/Python | Cluster-basiert (DAG) | Big Data |
-| Akka | Scala/Java | Actor Model | Low-Latency |
+| Apache Spark | Scala/Java/Python | Cluster (DAG) | Big Data |
+| **Akka** | Scala/Java | Actor Model | Low-Latency |
 | Celery | Python | Task Queue | Async Tasks |
-| Ray | Python | Distributed Runtime | ML/AI |
+| Ray | Python | Distributed | ML/AI |
 | Kafka | Java | Event Streaming | High-Throughput |
 | Dask | Python | Task Graph | Scientific |
 
-## Benchmark-Ergebnisse
-
-Monte-Carlo Pi-Berechnung mit 100M Samples:
-
-| Methode | Workers | Zeit | Speedup |
-|---------|---------|------|---------|
-| Sequential | 1 | 13.3s | 1.0x |
-| Multiprocessing | 8 | 2.5s | **5.27x** |
-
 ## Ausfuehrung
 
-**Python Benchmark:**
-```bash
-cd python-benchmark
-python pi_benchmark.py
+**Pi-Berechnung:**
+```cmd
+cd akka-example
+run.bat 10000000 4
 ```
 
-**Akka (mit Maven):**
-```bash
+**Benchmark:**
+```cmd
 cd akka-example
-mvn compile exec:java
+benchmark.bat
 ```
+
+## Benchmark-Ergebnisse
+
+Monte-Carlo Pi-Berechnung mit 100M Samples (Akka):
+
+| Workers | Zeit | Speedup |
+|---------|------|---------|
+| 1 (Sequential) | ~13s | 1.0x |
+| 2 | ~7s | 1.9x |
+| 4 | ~3.5s | 3.7x |
+| 8 | ~2s | **5x** |
 
 ## Quellen
 
@@ -54,7 +62,7 @@ mvn compile exec:java
 
 [3] M. Zaharia et al., "Apache Spark: A unified engine for big data processing," *Commun. ACM*, vol. 59, no. 11, pp. 56-65, Nov. 2016.
 
-[4] P. Moritz et al., "Ray: A distributed framework for emerging AI applications," in *Proc. 13th USENIX Symp. Operating Systems Design and Implementation*, Carlsbad, CA, USA, 2018, pp. 561-577.
+[4] Lightbend, "Akka Documentation," 2024. [Online]. Available: https://doc.akka.io/
 
 ## Autoren
 

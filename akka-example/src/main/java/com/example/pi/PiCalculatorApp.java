@@ -12,20 +12,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 /**
- * Hauptanwendung fuer die verteilte Pi-Berechnung mit Akka.
- *
  * Demonstriert das Master/Worker Pattern:
  * 1. Erstellt ein ActorSystem
  * 2. Startet einen Master-Actor
  * 3. Sendet Berechnungsauftrag an Master
  * 4. Master erstellt Worker und verteilt Arbeit
  * 5. Aggregiert Ergebnisse und berechnet Pi
- *
- * Verwendung:
- *   java -jar akka-pi-calculator.jar [samples] [workers]
- *
- *   samples: Anzahl der Monte-Carlo-Samples (default: 100.000.000)
- *   workers: Anzahl der Worker-Actors (default: Anzahl CPU-Kerne)
  */
 public class PiCalculatorApp {
 
